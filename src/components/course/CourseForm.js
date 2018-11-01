@@ -49,7 +49,7 @@ const CourseForm = ({ course, allAuthors, onSave, onChange, loading, errors }) =
 };
 
 
-CouserForm.PropTypes = {
+CourseForm.PropTypes = {
   course: React.PropTypes.object.isRequired,
   allAuthors: React.PropTypes.array,
   onSave: React.PropTypes.func.isRequired,
