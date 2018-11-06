@@ -10,8 +10,8 @@ class LoadingDots extends React.Component {
     this.interval = setInterval(() => {
       this.setState({
         frame: this.state.frame +1
-      }, this.props.interval);
-    });
+      });
+    }, this.props.interval);
   }
 
   componentWillUnmount() {
