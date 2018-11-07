@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import Header from './common/Header.js';
+import { connect } from 'react-redux';
+
 class App extends React.Component {
   render () {
     return (
@@ -17,4 +19,10 @@ App.PropTypes = {
   children: PropTypes.object.isRequired
 };
 
-export default App;
+function mapStateToProps(state, ownProps) {
+  return {
+    loading: state.ajaxCallsInProgress > 0
+  };
+}
+
+export default connect(mapStateToProps)(App);
