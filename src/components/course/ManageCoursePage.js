@@ -9,7 +9,8 @@ class ManagerCoursePage extends React.Component {
     super(props, context);
     this.state = {
       course: Object.assign({}, this.props.course),
-      errors: {}
+      errors: {},
+      saving: false
     };
 
     this.updateCourseState = this.updateCourseState.bind(this);
@@ -31,11 +32,12 @@ class ManagerCoursePage extends React.Component {
 
   saveCourse(event) {
     event.preventDefault();
-    this.props.actions.saveCourse(this.state.course)
-    .then(() => this.redirect());
+    this.setState({ saving: true });
+    this.props.actions.saveCourse(this.state.course).then(() => this.redirect());
   }
 
   redirect() {
+    this.setState({ saving: false });
     this.context.router.push('/courses');
   }
 
@@ -47,6 +49,7 @@ class ManagerCoursePage extends React.Component {
         errors={ this.state.errors }
         onChange={ this.updateCourseState }
         onSave={ this.saveCourse }
+        saving={ this.state.saving }
       />
     );
   }
