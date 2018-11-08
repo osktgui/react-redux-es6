@@ -6,7 +6,9 @@ class App extends React.Component {
   render () {
     return (
       <div className="container-fluid">
-        <Header />
+        <Header
+          loading={ this.props.loading }
+        />
         {
           this.props.children
         }
@@ -16,7 +18,8 @@ class App extends React.Component {
 }
 
 App.PropTypes = {
-  children: PropTypes.object.isRequired
+  children: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
