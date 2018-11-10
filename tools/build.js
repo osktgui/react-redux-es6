@@ -8,6 +8,7 @@ process.env.NODE_ENV = 'production';
 console.log('Generation minified bundle from production via webpack. This will take a moment...'.blue);
 
 webpack(webpackConfig).run((err, stats) => {
+
   if (err) {
     console.log(err.bold.red);
     return 1;
@@ -19,7 +20,7 @@ webpack(webpackConfig).run((err, stats) => {
     return jsonStats.errors.map(error => console.log(error.red));
   }
 
-  if (jsonStats.hasWarning) {
+  if (jsonStats.hasWarnings) {
     console.log('webpack generated the following warnings: '.bold.yellow);
     jsonStats.warnings.map(warning => console.log(warning.yellow));
   }
