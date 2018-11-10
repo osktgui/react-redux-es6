@@ -43,9 +43,11 @@ describe('Async Actions', () => {
 
     const store = mockStore({ courses: [] }, expectedActions);
     store.dispatch(courseActions.loadCourses()).then(() => {
+
       const actions = store.getActions();
+
       expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
-      expect(actinos[1].type).toEqual(types.LOAD_COURSES_SUCCESS);
+      expect(actions[1].type).toEqual(types.LOAD_COURSES_SUCCESS);
       done();
     });
   });
